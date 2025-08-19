@@ -1,0 +1,39 @@
+[gd_scene load_steps=2 format=3 uid="uid://bum60vuk0axb6"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_yaiv4"]
+font_size = 46
+
+[node name="Label" type="Label"]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -256.5
+offset_right = 256.5
+offset_bottom = 64.0
+grow_horizontal = 2
+text = "Venco's Squares Puzzle"
+label_settings = SubResource("LabelSettings_yaiv4")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -476.0
+offset_top = 150.0
+offset_right = -76.0
+offset_bottom = 550.0
+color = Color(0.673271, 0.384433, 0.963594, 1)
+
+[node name="ColorRect2" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = 78.0
+offset_top = 150.0
+offset_right = 478.0
+offset_bottom = 550.0
+color = Color(0.673271, 0.384433, 0.963594, 1)
