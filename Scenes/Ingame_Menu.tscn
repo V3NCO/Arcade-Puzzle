@@ -1,19 +1,13 @@
-[gd_scene load_steps=7 format=3 uid="uid://bum60vuk0axb6"]
+[gd_scene load_steps=4 format=3 uid="uid://bum60vuk0axb6"]
 
-[ext_resource type="Script" uid="uid://c0h02kimdoun5" path="res://ingame_menu.gd" id="1_6myt1"]
-[ext_resource type="Texture2D" uid="uid://bkuc1sr16y8ps" path="res://images/circle.svg" id="1_suhu1"]
-[ext_resource type="Script" uid="uid://0ppkg6y8xbob" path="res://sprite_2d.gd" id="2_6myt1"]
+[ext_resource type="TileSet" uid="uid://iaw0cjpddc8b" path="res://TileSet/Yes.tres" id="1_tvkdg"]
 
 [sub_resource type="Theme" id="Theme_2opte"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_0xk7v"]
 font_size = 40
 
-[sub_resource type="TileSet" id="TileSet_2opte"]
-tile_size = Vector2i(80, 80)
-
 [node name="Node2D" type="Node2D"]
-script = ExtResource("1_6myt1")
 
 [node name="Control" type="Control" parent="."]
 layout_mode = 3
@@ -64,9 +58,4 @@ label_settings = SubResource("LabelSettings_0xk7v")
 
 [node name="TileMapLayer" type="TileMapLayer" parent="."]
 position = Vector2(96, 124)
-tile_set = SubResource("TileSet_2opte")
-
-[node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(136, 164)
-texture = ExtResource("1_suhu1")
-script = ExtResource("2_6myt1")
+tile_set = ExtResource("1_tvkdg")

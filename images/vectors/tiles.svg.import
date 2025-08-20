@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dgklep1yd8ej0"
-path="res://.godot/imported/star.svg-766ab9813903c4efccf443edb39291d7.ctex"
+uid="uid://cn18oyhi0ayej"
+path="res://.godot/imported/tiles.svg-69f63cc5c7c138c905ea2ae442b9fedc.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://images/star.svg"
-dest_files=["res://.godot/imported/star.svg-766ab9813903c4efccf443edb39291d7.ctex"]
+source_file="res://images/vectors/tiles.svg"
+dest_files=["res://.godot/imported/tiles.svg-69f63cc5c7c138c905ea2ae442b9fedc.ctex"]
 
 [params]
 
