@@ -1,39 +1,72 @@
-[gd_scene load_steps=2 format=3 uid="uid://bum60vuk0axb6"]
+[gd_scene load_steps=7 format=3 uid="uid://bum60vuk0axb6"]
 
-[sub_resource type="LabelSettings" id="LabelSettings_yaiv4"]
-font_size = 46
+[ext_resource type="Script" uid="uid://c0h02kimdoun5" path="res://ingame_menu.gd" id="1_6myt1"]
+[ext_resource type="Texture2D" uid="uid://bkuc1sr16y8ps" path="res://images/circle.svg" id="1_suhu1"]
+[ext_resource type="Script" uid="uid://0ppkg6y8xbob" path="res://sprite_2d.gd" id="2_6myt1"]
 
-[node name="Label" type="Label"]
+[sub_resource type="Theme" id="Theme_2opte"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_0xk7v"]
+font_size = 40
+
+[sub_resource type="TileSet" id="TileSet_2opte"]
+tile_size = Vector2i(80, 80)
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource("1_6myt1")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1152.0
+offset_bottom = 648.0
+
+[node name="ColorRect" type="ColorRect" parent="Control"]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 96.0
+offset_top = -200.0
+offset_right = 496.0
+offset_bottom = 200.0
+grow_vertical = 2
+theme = SubResource("Theme_2opte")
+color = Color(0.588235, 0.513726, 0.92549, 1)
+
+[node name="ColorRect2" type="ColorRect" parent="Control"]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -496.0
+offset_top = -200.0
+offset_right = -96.0
+offset_bottom = 200.0
+grow_horizontal = 0
+grow_vertical = 2
+theme = SubResource("Theme_2opte")
+color = Color(0.588235, 0.513726, 0.92549, 1)
+
+[node name="Label" type="Label" parent="Control"]
+layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -256.5
-offset_right = 256.5
-offset_bottom = 64.0
+offset_left = -213.0
+offset_right = 213.0
+offset_bottom = 55.0
 grow_horizontal = 2
-text = "Venco's Squares Puzzle"
-label_settings = SubResource("LabelSettings_yaiv4")
-horizontal_alignment = 1
-vertical_alignment = 1
+text = "Venco's Square Puzzle"
+label_settings = SubResource("LabelSettings_0xk7v")
 
-[node name="ColorRect" type="ColorRect" parent="."]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -476.0
-offset_top = 150.0
-offset_right = -76.0
-offset_bottom = 550.0
-color = Color(0.673271, 0.384433, 0.963594, 1)
+[node name="TileMapLayer" type="TileMapLayer" parent="."]
+position = Vector2(96, 124)
+tile_set = SubResource("TileSet_2opte")
 
-[node name="ColorRect2" type="ColorRect" parent="."]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = 78.0
-offset_top = 150.0
-offset_right = 478.0
-offset_bottom = 550.0
-color = Color(0.673271, 0.384433, 0.963594, 1)
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(136, 164)
+texture = ExtResource("1_suhu1")
+script = ExtResource("2_6myt1")

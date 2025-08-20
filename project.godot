@@ -11,8 +11,14 @@ config_version=5
 [application]
 
 config/name="Arcade Puzzle"
+run/main_scene="uid://bum60vuk0axb6"
 config/features=PackedStringArray("4.4", "GL Compatibility")
 config/icon="res://icon.svg"
+
+[display]
+
+window/size/resizable=false
+window/stretch/mode="canvas_items"
 
 [editor_plugins]
 
