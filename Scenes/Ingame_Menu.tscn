@@ -54,7 +54,7 @@ offset_left = -213.0
 offset_right = 213.0
 offset_bottom = 55.0
 grow_horizontal = 2
-text = "Venco's Square Puzzle"
+text = "Square Puzzle Crazy frfr"
 label_settings = SubResource("LabelSettings_0xk7v")
 
 [node name="TileMapLayer" type="TileMapLayer" parent="."]
