@@ -1,6 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://bum60vuk0axb6"]
+[gd_scene load_steps=7 format=3 uid="uid://bum60vuk0axb6"]
 
+[ext_resource type="Script" uid="uid://dkjc8gnlc0g6i" path="res://Scenes/cursor.gd" id="1_322e4"]
 [ext_resource type="TileSet" uid="uid://cjuhwb3yscdf4" path="res://TileSet/tilescrazy.tres" id="1_mrwon"]
+[ext_resource type="TileSet" uid="uid://v6jcm16cqd11" path="res://TileSet/tiles_select.tres" id="1_q1ltg"]
 [ext_resource type="Script" uid="uid://exwn140fa7is" path="res://Scripts/tile_map_layer.gd" id="2_mrwon"]
 
 [sub_resource type="Theme" id="Theme_2opte"]
@@ -57,7 +59,15 @@ grow_horizontal = 2
 text = "Square Puzzle Crazy frfr"
 label_settings = SubResource("LabelSettings_0xk7v")
 
-[node name="TileMapLayer" type="TileMapLayer" parent="."]
+[node name="Cursor" type="TileMapLayer" parent="."]
+position = Vector2(96, 124)
+tile_set = ExtResource("1_q1ltg")
+script = ExtResource("1_322e4")
+
+[node name="Display" type="TileMapLayer" parent="."]
 position = Vector2(96, 124)
 tile_set = ExtResource("1_mrwon")
 script = ExtResource("2_mrwon")
+
+[connection signal="grid_horizontal" from="Cursor" to="Display" method="_on_move_grid_horizontal"]
+[connection signal="grid_vertical" from="Cursor" to="Display" method="_on_move_grid_vertical"]
