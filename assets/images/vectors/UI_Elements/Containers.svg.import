@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bewjy6ej8t3ox"
-path="res://.godot/imported/Pink.svg-9f4f03a2e796bce0602f83b42eabd4b9.ctex"
+uid="uid://cnb2pfgmrq3qt"
+path="res://.godot/imported/Containers.svg-efbcca7719ad9e139fd5dd99b02a1f4b.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/images/vectors/buttons_hovered/Pink.svg"
-dest_files=["res://.godot/imported/Pink.svg-9f4f03a2e796bce0602f83b42eabd4b9.ctex"]
+source_file="res://assets/images/vectors/UI_Elements/Containers.svg"
+dest_files=["res://.godot/imported/Containers.svg-efbcca7719ad9e139fd5dd99b02a1f4b.ctex"]
 
 [params]
 

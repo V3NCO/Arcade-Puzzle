@@ -1,5 +1,6 @@
-[gd_scene load_steps=8 format=3 uid="uid://cc3andqk6n1vm"]
+[gd_scene load_steps=9 format=3 uid="uid://cc3andqk6n1vm"]
 
+[ext_resource type="Script" uid="uid://ds6pk5tad3ui2" path="res://Scenes/ui_destroy.gd" id="1_3jcrr"]
 [ext_resource type="Script" uid="uid://c5m5f2lm5quv4" path="res://Scripts/play_button.gd" id="1_3kf3n"]
 [ext_resource type="Script" uid="uid://b03t0ssmatd7r" path="res://Scripts/menu.gd" id="1_syfuq"]
 [ext_resource type="Texture2D" uid="uid://c2ip6a04hgapi" path="res://assets/images/Background_Menu.png" id="1_wfhf6"]
@@ -15,6 +16,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_3jcrr")
 
 [node name="TextureRect" type="TextureRect" parent="."]
 layout_mode = 2
@@ -54,22 +56,26 @@ script = ExtResource("1_syfuq")
 [node name="RichTextLabel" type="RichTextLabel" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
+theme_override_constants/outline_size = 50
+theme_override_fonts/normal_font = ExtResource("2_syfuq")
 theme_override_font_sizes/mono_font_size = 9
-theme_override_font_sizes/normal_font_size = 39
+theme_override_font_sizes/normal_font_size = 106
 text = "
 Grid Shift"
 fit_content = true
 tab_size = 11
+horizontal_alignment = 1
 
-[node name="TextureButton" type="TextureButton" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
+[node name="PlayBtn" type="TextureButton" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
 layout_mode = 2
 texture_normal = ExtResource("5_3jcrr")
 texture_pressed = ExtResource("6_wfhf6")
 texture_hover = ExtResource("7_ab40c")
+texture_focused = ExtResource("7_ab40c")
 stretch_mode = 0
 script = ExtResource("1_3kf3n")
 
-[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/TextureButton"]
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/PlayBtn"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -90,13 +96,63 @@ text = "Start Game"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Difficulty" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
+[node name="DifficultyBtn" type="TextureButton" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
 layout_mode = 2
-text = "Difficulty : 1 - 3-15 Shuffle Steps"
+texture_normal = ExtResource("5_3jcrr")
+texture_pressed = ExtResource("6_wfhf6")
+texture_hover = ExtResource("7_ab40c")
+texture_focused = ExtResource("7_ab40c")
+stretch_mode = 0
 
-[node name="Quit" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/DifficultyBtn"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -33.0
+offset_top = -25.0
+offset_right = 33.0
+offset_bottom = 25.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_outline_color = Color(0.498039, 0.333333, 0.184314, 1)
+theme_override_constants/outline_size = 20
+theme_override_fonts/font = ExtResource("2_syfuq")
+theme_override_font_sizes/font_size = 38
+text = "Difficulty : 1 - 3-15 Shuffle Steps"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="QuitBtn" type="TextureButton" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
 layout_mode = 2
+texture_normal = ExtResource("5_3jcrr")
+texture_pressed = ExtResource("6_wfhf6")
+texture_hover = ExtResource("7_ab40c")
+texture_focused = ExtResource("7_ab40c")
+stretch_mode = 0
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/QuitBtn"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -33.0
+offset_top = -25.0
+offset_right = 33.0
+offset_bottom = 25.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_outline_color = Color(0.498039, 0.333333, 0.184314, 1)
+theme_override_constants/outline_size = 20
+theme_override_fonts/font = ExtResource("2_syfuq")
+theme_override_font_sizes/font_size = 38
 text = "Quit"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="CenterContainer" type="CenterContainer" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
 layout_mode = 2
@@ -107,6 +163,7 @@ size_flags_stretch_ratio = 0.77
 layout_mode = 2
 size_flags_horizontal = 3
 
-[connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/TextureButton" to="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer" method="_on_play_button_pressed"]
-[connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/Difficulty" to="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer" method="_on_difficulty_pressed"]
-[connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/Quit" to="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer" method="_quit_button"]
+[connection signal="getout" from="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer" to="." method="_on_v_box_container_getout"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/PlayBtn" to="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer" method="_on_play_button_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/DifficultyBtn" to="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer" method="_on_difficulty_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/QuitBtn" to="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer" method="_quit_button"]

@@ -2,8 +2,9 @@ extends VBoxContainer
 
 
 var difficulty = 1
-@onready var diff_btn = $Difficulty
+@onready var diff_btn = $DifficultyBtn/Label
 signal ask_start
+signal getout
 
 func _ready():
 	diff_btn.text = "Difficulty : 1 - 3-15 Shuffle Steps"
@@ -29,7 +30,7 @@ func _on_difficulty_pressed() -> void:
 func _on_play_button_pressed() -> void:
 	SceneManager.scene_switch("res://Scenes/Ingame_Menu.tscn", difficulty, true)
 	# Only do this if your SceneManager isn't using change_scene_to_file right away.
-	queue_free()
+	getout.emit()
 
 func _quit_button() -> void:
 	get_tree().quit()

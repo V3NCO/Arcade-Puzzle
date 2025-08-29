@@ -1,0 +1,89 @@
+[gd_scene load_steps=4 format=3 uid="uid://msnum5uf3a4a"]
+
+[ext_resource type="Texture2D" uid="uid://c2ip6a04hgapi" path="res://assets/images/Background_Menu.png" id="1_rmnxg"]
+[ext_resource type="Texture2D" uid="uid://cnb2pfgmrq3qt" path="res://assets/images/vectors/UI_Elements/Containers.svg" id="2_b07q8"]
+[ext_resource type="FontFile" uid="uid://e10bi54jw2xp" path="res://assets/Chewy-Regular.ttf" id="3_twpq3"]
+
+[node name="Guide" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 1920.0
+offset_bottom = 1080.0
+texture = ExtResource("1_rmnxg")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 0
+offset_right = 1920.0
+offset_bottom = 1080.0
+alignment = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/margin_left = 50
+theme_override_constants/margin_top = 50
+theme_override_constants/margin_right = 50
+theme_override_constants/margin_bottom = 50
+
+[node name="CenterContainer" type="CenterContainer" parent="HBoxContainer/MarginContainer"]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="HBoxContainer/MarginContainer/CenterContainer"]
+layout_mode = 2
+texture = ExtResource("2_b07q8")
+expand_mode = 2
+stretch_mode = 3
+
+[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer/MarginContainer"]
+layout_mode = 2
+theme_override_constants/margin_top = 12
+
+[node name="Label" type="Label" parent="HBoxContainer/MarginContainer/MarginContainer"]
+layout_mode = 2
+size_flags_vertical = 0
+theme_override_colors/font_outline_color = Color(0.498039, 0.419608, 0.184314, 1)
+theme_override_constants/outline_size = 20
+theme_override_fonts/font = ExtResource("3_twpq3")
+theme_override_font_sizes/font_size = 53
+text = "Guide"
+horizontal_alignment = 1
+vertical_alignment = 2
+
+[node name="MarginContainer2" type="MarginContainer" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/margin_left = 50
+theme_override_constants/margin_top = 50
+theme_override_constants/margin_right = 50
+theme_override_constants/margin_bottom = 50
+
+[node name="CenterContainer" type="CenterContainer" parent="HBoxContainer/MarginContainer2"]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="HBoxContainer/MarginContainer2/CenterContainer"]
+layout_mode = 2
+texture = ExtResource("2_b07q8")
+expand_mode = 2
+stretch_mode = 3
+
+[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer/MarginContainer2"]
+layout_mode = 2
+theme_override_constants/margin_top = 12
+
+[node name="Label" type="Label" parent="HBoxContainer/MarginContainer2/MarginContainer"]
+layout_mode = 2
+size_flags_vertical = 0
+theme_override_colors/font_outline_color = Color(0.498039, 0.419608, 0.184314, 1)
+theme_override_constants/outline_size = 20
+theme_override_fonts/font = ExtResource("3_twpq3")
+theme_override_font_sizes/font_size = 53
+text = "Controls"
+horizontal_alignment = 1
+vertical_alignment = 2

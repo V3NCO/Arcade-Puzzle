@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cl0lyfrj1lal"
-path="res://.godot/imported/Brown.svg-92b42f09d1d8937b7fb55e3ecbe484dc.ctex"
+uid="uid://ckwo8bxk3bxn5"
+path="res://.godot/imported/Orange.svg-5608623d21cbe6eaac2110d6574d1e42.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/images/vectors/buttons_normal/Brown.svg"
-dest_files=["res://.godot/imported/Brown.svg-92b42f09d1d8937b7fb55e3ecbe484dc.ctex"]
+source_file="res://assets/images/vectors/UI_Elements/buttons_hovered/Orange.svg"
+dest_files=["res://.godot/imported/Orange.svg-5608623d21cbe6eaac2110d6574d1e42.ctex"]
 
 [params]
 

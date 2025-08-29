@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ckwo8bxk3bxn5"
-path="res://.godot/imported/Orange.svg-1b4ad151da7c434ef258b78ca7c1a338.ctex"
+uid="uid://ct4mdq3k3r3p1"
+path="res://.godot/imported/Pink.svg-efd0997d564adf6037205f8d8e1dc63d.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/images/vectors/buttons_hovered/Orange.svg"
-dest_files=["res://.godot/imported/Orange.svg-1b4ad151da7c434ef258b78ca7c1a338.ctex"]
+source_file="res://assets/images/vectors/UI_Elements/buttons_normal/Pink.svg"
+dest_files=["res://.godot/imported/Pink.svg-efd0997d564adf6037205f8d8e1dc63d.ctex"]
 
 [params]
 

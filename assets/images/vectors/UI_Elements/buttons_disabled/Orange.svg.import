@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dvsmixotwbj1"
-path="res://.godot/imported/Cyan.svg-bf680a39fb653e6ac9b9cb8460e7e764.ctex"
+uid="uid://bgmk1k7rkch1f"
+path="res://.godot/imported/Orange.svg-bea3ac6a77de3b3349710677e5324e1c.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/images/vectors/buttons_normal/Cyan.svg"
-dest_files=["res://.godot/imported/Cyan.svg-bf680a39fb653e6ac9b9cb8460e7e764.ctex"]
+source_file="res://assets/images/vectors/UI_Elements/buttons_disabled/Orange.svg"
+dest_files=["res://.godot/imported/Orange.svg-bea3ac6a77de3b3349710677e5324e1c.ctex"]
 
 [params]
 
