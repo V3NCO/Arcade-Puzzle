@@ -56,6 +56,42 @@ text = "Guide"
 horizontal_alignment = 1
 vertical_alignment = 2
 
+[node name="MarginContainer2" type="MarginContainer" parent="HBoxContainer/MarginContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 23
+theme_override_constants/margin_top = 88
+theme_override_constants/margin_right = 23
+theme_override_constants/margin_bottom = 30
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/MarginContainer/MarginContainer2"]
+layout_mode = 2
+
+[node name="RichTextLabel" type="RichTextLabel" parent="HBoxContainer/MarginContainer/MarginContainer2/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/outline_size = 15
+theme_override_fonts/normal_font = ExtResource("3_twpq3")
+theme_override_fonts/mono_font = ExtResource("3_twpq3")
+theme_override_fonts/italics_font = ExtResource("3_twpq3")
+theme_override_fonts/bold_italics_font = ExtResource("3_twpq3")
+theme_override_fonts/bold_font = ExtResource("3_twpq3")
+theme_override_font_sizes/normal_font_size = 35
+bbcode_enabled = true
+text = "You will get 2 Grids :
+[img]res://assets/images/vectors/Guide/Grids.png[/img]
+
+
+The tiles in them will be scrambled
+
+Your goal ? Make the [color=0C4FB4]Left Grid[/color] match the [color=9C0AD5]Right Grid[/color]
+Yes, it is possible; the scrambling is done with the same moves that you can do !
+
+You can control the cursor that will select the line and column where it is that you can then move!
+
+
+Good luck :3 :) !"
+fit_content = true
+scroll_active = false
+
 [node name="MarginContainer2" type="MarginContainer" parent="HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
@@ -87,3 +123,35 @@ theme_override_font_sizes/font_size = 53
 text = "Controls"
 horizontal_alignment = 1
 vertical_alignment = 2
+
+[node name="MarginContainer2" type="MarginContainer" parent="HBoxContainer/MarginContainer2"]
+layout_mode = 2
+theme_override_constants/margin_left = 40
+theme_override_constants/margin_top = 88
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 30
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/MarginContainer2/MarginContainer2"]
+layout_mode = 2
+
+[node name="RichTextLabel" type="RichTextLabel" parent="HBoxContainer/MarginContainer2/MarginContainer2/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/outline_size = 15
+theme_override_constants/line_separation = 27
+theme_override_fonts/normal_font = ExtResource("3_twpq3")
+theme_override_fonts/mono_font = ExtResource("3_twpq3")
+theme_override_fonts/italics_font = ExtResource("3_twpq3")
+theme_override_fonts/bold_italics_font = ExtResource("3_twpq3")
+theme_override_fonts/bold_font = ExtResource("3_twpq3")
+theme_override_font_sizes/normal_font_size = 35
+bbcode_enabled = true
+text = "[img height=80]res://assets/images/vectors/Guide/Keys/UpArrow.png[/img] [font_size=50]- Moves the Cursor Up
+[img height=80]res://assets/images/vectors/Guide/Keys/DownArrow.png[/img] [font_size=50]- Moves the Cursor Down
+[img height=80]res://assets/images/vectors/Guide/Keys/LeftArrow.png[/img] [font_size=50]- Moves the Cursor Left
+[img height=80]res://assets/images/vectors/Guide/Keys/RightArrow.png[/img] [font_size=50]- Moves the Cursor Right
+[img height=80]res://assets/images/vectors/Guide/Keys/WKey.png[/img] [font_size=50]- Moves the Selected Column Up
+[img height=80]res://assets/images/vectors/Guide/Keys/SKey.png[/img] [font_size=50]- Moves the Selected Column Down
+[img height=80]res://assets/images/vectors/Guide/Keys/AKey.png[/img] [font_size=50]- Moves the Selected Line Left
+[img height=80]res://assets/images/vectors/Guide/Keys/DKey.png[/img] [font_size=50]- Moves the Selected Line Right"
+fit_content = true
+scroll_active = false

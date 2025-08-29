@@ -1,6 +1,10 @@
 extends TileMapLayer
 
 @onready var title = $"../Control/Label"
+var _loading_screen_scene:PackedScene = preload("res://Scenes/loading_screen.tscn")
+var _loading_screen:LoadingScreen
+var _transition:String
+
 
 func _on_start_game(diff):
 	init()
