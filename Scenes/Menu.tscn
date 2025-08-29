@@ -10,7 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://dqqfitay01xps" path="res://assets/images/vectors/UI_Elements/buttons_hovered/Brown.svg" id="7_ab40c"]
 [ext_resource type="Texture2D" uid="uid://dbce405w46vsn" path="res://assets/images/vectors/UI_Elements/buttons_disabled/Brown.svg" id="9_aobxe"]
 
-[node name="Control" type="Control"]
+[node name="MainMenu" type="Control"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -48,6 +48,7 @@ layout_mode = 2
 size_flags_horizontal = 3
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -94,6 +95,36 @@ theme_override_constants/outline_size = 20
 theme_override_fonts/font = ExtResource("2_syfuq")
 theme_override_font_sizes/font_size = 38
 text = "Start Game"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="SkipGuideBtn" type="TextureButton" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+texture_normal = ExtResource("5_3jcrr")
+texture_pressed = ExtResource("6_wfhf6")
+texture_hover = ExtResource("7_ab40c")
+texture_focused = ExtResource("7_ab40c")
+stretch_mode = 0
+script = ExtResource("1_3kf3n")
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/SkipGuideBtn"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -33.0
+offset_top = -25.0
+offset_right = 33.0
+offset_bottom = 25.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_outline_color = Color(0.498039, 0.333333, 0.184314, 1)
+theme_override_constants/outline_size = 20
+theme_override_fonts/font = ExtResource("2_syfuq")
+theme_override_font_sizes/font_size = 38
+text = "Start Game (Skip Guide)"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -197,5 +228,6 @@ size_flags_horizontal = 3
 
 [connection signal="getout" from="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer" to="." method="_on_v_box_container_getout"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/PlayBtn" to="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer" method="_on_play_button_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/SkipGuideBtn" to="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer" method="_on_skip_button_pressed"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/DifficultyBtn" to="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer" method="_on_difficulty_pressed"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/QuitBtn" to="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer" method="_quit_button"]

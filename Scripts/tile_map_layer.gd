@@ -1,14 +1,13 @@
 extends TileMapLayer
 
 @onready var title = $"../Control/Label"
-var _loading_screen_scene:PackedScene = preload("res://Scenes/loading_screen.tscn")
-var _loading_screen:LoadingScreen
-var _transition:String
-
+var initializing = true
 
 func _on_start_game(diff):
-	init()
-	shuffle(diff)
+	await init()
+	print(diff)
+	await shuffle(diff)
+	initializing = false
 
 func init():
 	# Set numbers so that we get 5 of each shape
@@ -97,22 +96,25 @@ func move_line_right(line, relcol):
 	check_squares(0, 0, 7, 0)
 	
 func check_squares(originn, origino, n1, o1):
-	var win = true
-	for n in range(5):
-		for o in range(5):
-			var square1 = get_cell_atlas_coords(Vector2i(n1+n, o1+o))
-			var square2 = get_cell_atlas_coords(Vector2i(originn+n, origino+o))
-			if not square1[0] == square2[0]:
-				win = false
-	if win == true: title.text = "You WIN !"
-		
+	if initializing == false:
+		var win = true
+		for n in range(5):
+			for o in range(5):
+				var square1 = get_cell_atlas_coords(Vector2i(n1+n, o1+o))
+				var square2 = get_cell_atlas_coords(Vector2i(originn+n, origino+o))
+				if not square1[0] == square2[0]:
+					win = false
+		if win == true: they_won_gng_we_gotta_do_something()
+
+func they_won_gng_we_gotta_do_something():
+	title.text = "You WIN !"
+
 func wait(seconds: float) -> void:
 	await get_tree().create_timer(seconds).timeout
 
 func _on_move_grid_horizontal(pos, dir) -> void:
 	if dir == "right": move_line_right(pos, 0)
 	if dir == "left": move_line_left(pos, 0)
-	wait(1)
 
 
 func _on_move_grid_vertical(pos, dir) -> void:

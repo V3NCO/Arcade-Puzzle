@@ -28,9 +28,13 @@ func _on_difficulty_pressed() -> void:
 
 
 func _on_play_button_pressed() -> void:
-	SceneManager.scene_switch("res://Scenes/Ingame_Menu.tscn", difficulty, true)
+	# SceneManager.scene_switch("res://Scenes/Ingame_Menu.tscn", difficulty, true)
 	# Only do this if your SceneManager isn't using change_scene_to_file right away.
-	getout.emit()
+	getout.emit(true)
 
 func _quit_button() -> void:
 	get_tree().quit()
+
+
+func _on_skip_button_pressed() -> void:
+	getout.emit(false)
