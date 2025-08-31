@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://dgjvw4yfxe3pq"]
+[gd_scene load_steps=5 format=3 uid="uid://dgjvw4yfxe3pq"]
 
 [ext_resource type="Script" uid="uid://c40moa3ggjqjd" path="res://Scenes/MainGridScript.gd" id="1_uikxg"]
+[ext_resource type="Texture2D" uid="uid://btejmm40tedn4" path="res://assets/images/vectors/UI_Elements/BgGrid.svg" id="2_ocdfl"]
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_6t4vu"]
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ocdfl"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_uikxg"]
 
@@ -12,6 +13,8 @@ script = ExtResource("1_uikxg")
 [node name="HSplitContainer" type="HSplitContainer" parent="."]
 offset_right = 1920.0
 offset_bottom = 1080.0
+dragging_enabled = false
+dragger_visibility = 2
 
 [node name="LeftMargin" type="MarginContainer" parent="HSplitContainer"]
 layout_mode = 2
@@ -20,11 +23,15 @@ size_flags_horizontal = 3
 [node name="CenterContainer" type="CenterContainer" parent="HSplitContainer/LeftMargin"]
 layout_mode = 2
 
+[node name="TextureRect" type="TextureRect" parent="HSplitContainer/LeftMargin/CenterContainer"]
+layout_mode = 2
+texture = ExtResource("2_ocdfl")
+
 [node name="LeftPanel" type="Panel" parent="HSplitContainer/LeftMargin/CenterContainer"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(630, 630)
 layout_mode = 2
-theme_override_styles/panel = SubResource("StyleBoxEmpty_6t4vu")
+theme_override_styles/panel = SubResource("StyleBoxEmpty_ocdfl")
 
 [node name="RightMargin" type="MarginContainer" parent="HSplitContainer"]
 layout_mode = 2
@@ -33,6 +40,10 @@ size_flags_horizontal = 3
 [node name="CenterContainer" type="CenterContainer" parent="HSplitContainer/RightMargin"]
 custom_minimum_size = Vector2(630, 630)
 layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="HSplitContainer/RightMargin/CenterContainer"]
+layout_mode = 2
+texture = ExtResource("2_ocdfl")
 
 [node name="RightPanel" type="Panel" parent="HSplitContainer/RightMargin/CenterContainer"]
 unique_name_in_owner = true
