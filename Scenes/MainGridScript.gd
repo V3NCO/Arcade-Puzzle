@@ -177,8 +177,6 @@ func init_render_cells(initial_grid: Dictionary, cell_size: float, cells_name: S
 			
 			
 			
-	# TODO: Create objects at position cell_size*grid_position
-	# Maybe make the shuffle internal to the grid directly from the Dictionary
 	# I can use "clipping" to have that mask effect where you dont see OOB stuff
 	# Everything will have to be fast, dynamic and smooth; even the cursor; maybe ease in/out fast would be good
 	# Find a way to scale the asset to the sprite or whatever you choose
