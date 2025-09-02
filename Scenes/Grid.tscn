@@ -1,14 +1,15 @@
-[gd_scene load_steps=5 format=3 uid="uid://dgjvw4yfxe3pq"]
+[gd_scene load_steps=6 format=3 uid="uid://dgjvw4yfxe3pq"]
 
-[ext_resource type="Script" uid="uid://c40moa3ggjqjd" path="res://Scenes/MainGridScript.gd" id="1_uikxg"]
-[ext_resource type="Texture2D" uid="uid://btejmm40tedn4" path="res://assets/images/vectors/UI_Elements/BgGrid.svg" id="2_ocdfl"]
+[ext_resource type="Script" uid="uid://c40moa3ggjqjd" path="res://Scripts/Grid/MainGridScript.gd" id="1_n8x2e"]
+[ext_resource type="Texture2D" uid="uid://btejmm40tedn4" path="res://assets/images/vectors/UI_Elements/BgGrid.svg" id="2_tdbcv"]
+[ext_resource type="Script" uid="uid://g0hl8fuc7okq" path="res://Scripts/Grid/left_panel.gd" id="3_0yrm8"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ocdfl"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_uikxg"]
 
 [node name="3x3Grid" type="Node2D"]
-script = ExtResource("1_uikxg")
+script = ExtResource("1_n8x2e")
 
 [node name="HSplitContainer" type="HSplitContainer" parent="."]
 offset_right = 1920.0
@@ -25,13 +26,14 @@ layout_mode = 2
 
 [node name="TextureRect" type="TextureRect" parent="HSplitContainer/LeftMargin/CenterContainer"]
 layout_mode = 2
-texture = ExtResource("2_ocdfl")
+texture = ExtResource("2_tdbcv")
 
 [node name="LeftPanel" type="Panel" parent="HSplitContainer/LeftMargin/CenterContainer"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(630, 630)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxEmpty_ocdfl")
+script = ExtResource("3_0yrm8")
 
 [node name="RightMargin" type="MarginContainer" parent="HSplitContainer"]
 layout_mode = 2
@@ -43,7 +45,7 @@ layout_mode = 2
 
 [node name="TextureRect" type="TextureRect" parent="HSplitContainer/RightMargin/CenterContainer"]
 layout_mode = 2
-texture = ExtResource("2_ocdfl")
+texture = ExtResource("2_tdbcv")
 
 [node name="RightPanel" type="Panel" parent="HSplitContainer/RightMargin/CenterContainer"]
 unique_name_in_owner = true

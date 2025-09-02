@@ -1,10 +1,10 @@
 [gd_scene load_steps=8 format=3 uid="uid://bum60vuk0axb6"]
 
-[ext_resource type="Script" uid="uid://dkjc8gnlc0g6i" path="res://Scripts/cursor.gd" id="1_322e4"]
-[ext_resource type="Script" uid="uid://b3q0wtnur1hlr" path="res://Scripts/ingame_menu.gd" id="1_i5q0d"]
+[ext_resource type="Script" uid="uid://dkjc8gnlc0g6i" path="res://Scripts/Legacy_Grid/cursor.gd" id="1_322e4"]
+[ext_resource type="Script" uid="uid://b3q0wtnur1hlr" path="res://Scripts/Legacy_Grid/ingame_menu.gd" id="1_i5q0d"]
 [ext_resource type="TileSet" uid="uid://cjuhwb3yscdf4" path="res://TileSet/tilescrazy.tres" id="1_mrwon"]
 [ext_resource type="TileSet" uid="uid://v6jcm16cqd11" path="res://TileSet/tiles_select.tres" id="1_q1ltg"]
-[ext_resource type="Script" uid="uid://exwn140fa7is" path="res://Scripts/tile_map_layer.gd" id="2_mrwon"]
+[ext_resource type="Script" uid="uid://exwn140fa7is" path="res://Scripts/Legacy_Grid/tile_map_layer.gd" id="2_mrwon"]
 
 [sub_resource type="Theme" id="Theme_2opte"]
 

@@ -1,8 +1,8 @@
 [gd_scene load_steps=10 format=3 uid="uid://cc3andqk6n1vm"]
 
-[ext_resource type="Script" uid="uid://ds6pk5tad3ui2" path="res://Scripts/ui_destroy.gd" id="1_3jcrr"]
-[ext_resource type="Script" uid="uid://c5m5f2lm5quv4" path="res://Scripts/play_button.gd" id="1_3kf3n"]
-[ext_resource type="Script" uid="uid://b03t0ssmatd7r" path="res://Scripts/menu.gd" id="1_syfuq"]
+[ext_resource type="Script" uid="uid://ds6pk5tad3ui2" path="res://Scripts/MainMenu/menu_root.gd" id="1_3jcrr"]
+[ext_resource type="Script" uid="uid://c5m5f2lm5quv4" path="res://Scripts/MainMenu/play_button.gd" id="1_3kf3n"]
+[ext_resource type="Script" uid="uid://b03t0ssmatd7r" path="res://Scripts/MainMenu/menu.gd" id="1_syfuq"]
 [ext_resource type="Texture2D" uid="uid://c2ip6a04hgapi" path="res://assets/images/Background_Menu.png" id="1_wfhf6"]
 [ext_resource type="FontFile" uid="uid://e10bi54jw2xp" path="res://assets/Chewy-Regular.ttf" id="2_syfuq"]
 [ext_resource type="Texture2D" uid="uid://cl0lyfrj1lal" path="res://assets/images/vectors/UI_Elements/buttons_normal/Brown.svg" id="5_3jcrr"]
@@ -105,7 +105,6 @@ texture_pressed = ExtResource("6_wfhf6")
 texture_hover = ExtResource("7_ab40c")
 texture_focused = ExtResource("7_ab40c")
 stretch_mode = 0
-script = ExtResource("1_3kf3n")
 
 [node name="Label" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/SkipGuideBtn"]
 layout_mode = 1
