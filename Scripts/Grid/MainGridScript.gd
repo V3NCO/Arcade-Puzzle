@@ -12,6 +12,7 @@ var grid_size = 12
 # Each Panels
 @onready var right_panel = $%RightPanel
 @onready var left_panel = $%LeftPanel
+signal init_done
 
 func _ready() -> void:
 	start()
@@ -29,8 +30,8 @@ func start():
 	init_render_cells(initial_grid, cell_size, "CellRight", right_panel)
 	print("Step 2 complete; Proceeding to Step 3.")
 	init_render_cells(scramble_grid(initial_grid, difficulty), cell_size, "CellLeft", left_panel)
-	
-	
+	print("Step 3 Complete. Sending Data to Left Panel.")
+	init_done.emit(difficulty, grid_size, cell_size)
 
 # Scrambly Scrambly and Create Initial grid
 func init_make_grid(grid_size: int):

@@ -30,6 +30,7 @@ texture = ExtResource("2_tdbcv")
 
 [node name="LeftPanel" type="Panel" parent="HSplitContainer/LeftMargin/CenterContainer"]
 unique_name_in_owner = true
+clip_contents = true
 custom_minimum_size = Vector2(630, 630)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxEmpty_ocdfl")
@@ -52,3 +53,5 @@ unique_name_in_owner = true
 custom_minimum_size = Vector2(630, 630)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxEmpty_uikxg")
+
+[connection signal="init_done" from="." to="HSplitContainer/LeftMargin/CenterContainer/LeftPanel" method="_on_init_done"]
