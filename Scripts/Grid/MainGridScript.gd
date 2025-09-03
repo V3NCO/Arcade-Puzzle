@@ -165,7 +165,7 @@ func init_render_cells(initial_grid: Dictionary, cell_size: float, cells_name: S
 			cell.scale = Vector2(scale_fact, scale_fact)
 			cell.centered = false
 			cell.name = "Cell_"+str(index)+"_"+str(n)+"_"+str(o)
-			
+			# n is line; index is column; o is the texture id (-1)
 			# Debug Text
 			print("Setting Cell Named "+str(cell.name)+" that has "+str(text_str)+" set as their texture and "+str(scale_fact)+" as their scale at : " + str(Vector2(cell_size*index, cell_size*n)))			
 			
