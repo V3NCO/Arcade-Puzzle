@@ -89,7 +89,7 @@ func scramble_grid(initial_grid, difficulty):
 				var temp = new_grid[last_line][column]
 				
 				# Debug Text
-				print("Going down on column "+str(column))
+				# print("Going down on column "+str(column))
 				
 				# Go Down gng
 				for k in range(new_grid.size()):
@@ -104,7 +104,7 @@ func scramble_grid(initial_grid, difficulty):
 				var temp = new_grid[0][column]
 				
 				# Debug Text
-				print("Going up on column "+str(column))
+				# print("Going up on column "+str(column))
 				
 				# Go Up gng
 				for k in range(new_grid.size()):
@@ -119,7 +119,7 @@ func scramble_grid(initial_grid, difficulty):
 				var temp = new_grid[line][0]
 				
 				# Debug Text
-				print("Going left on line "+str(line))
+				# print("Going left on line "+str(line))
 				
 				# Go left gng
 				for k in range(new_grid[line].size()):
@@ -135,7 +135,7 @@ func scramble_grid(initial_grid, difficulty):
 				var temp = new_grid[line][last_col]
 				
 				# Debug Text
-				print("Going right on line "+str(line))
+				# print("Going right on line "+str(line))
 				
 				# Go right gng
 				for k in range(new_grid[line].size()):

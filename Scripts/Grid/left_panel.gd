@@ -89,15 +89,35 @@ func grid_move(direction):
 			"up":
 				if not start_pos.y == 0:
 					end_pos.y -= cell_size
+					grid_tween.tween_property(cell, "position", end_pos, 0.15)
 				else:
-					print("pong")
+					end_pos.y -= cell_size
+					var newcell = cell.duplicate()
+					newcell.position = Vector2(end_pos.x, 630)
+					add_child(newcell)
+					grid_tween.tween_property(cell, "position", end_pos, 0.15)
+					grid_tween.tween_property(newcell, "position", Vector2(end_pos.x, 630-cell_size), 0.15)
+					cell.queue_free()
+					
 			"down": 
-				end_pos.y += cell_size
+				if not start_pos.y == 630-cell_size:
+					end_pos.y += cell_size
+					grid_tween.tween_property(cell, "position", end_pos, 0.15)
+				else:
+					end_pos.y = 0
 			"left":
-				end_pos.x -= cell_size
+				if not start_pos.x == 0:
+					end_pos.x -= cell_size
+					grid_tween.tween_property(cell, "position", end_pos, 0.15)
+				else:
+					end_pos.x = (grid_size - 1) * cell_size
 			"right":
-				end_pos.x += cell_size
-			
+				if not start_pos.x == 630-cell_size:
+					end_pos.x += cell_size
+					grid_tween.tween_property(cell, "position", end_pos, 0.15)
+				else:
+					end_pos.x = 0
+		
 		grid_tween.tween_property(cell, "position", end_pos, 0.15)
 	
 func _process(_delta):
