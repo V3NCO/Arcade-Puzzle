@@ -220,8 +220,8 @@ func _on_left_panel_tutstep_1() -> void:
 
 
 func _on_left_panel_tutstep_2() -> void:
-	text_element.text = "Well done ! You're now ready for your first real puzzle :)"
-	await get_tree().create_timer(5).timeout
+	text_element.text = "Well done ! See how you made both grids match ? That's your end goal on real puzzles. GL!"
+	await get_tree().create_timer(10).timeout
 	SceneManager.swap_scenes("res://Scenes/Grid.tscn",get_tree().root,self,"fade_to_black")
 	level = 1
 	difficulty = 1
