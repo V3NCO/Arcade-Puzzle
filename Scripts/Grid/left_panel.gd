@@ -67,20 +67,19 @@ func grid_move(direction):
 		grid_tween.kill()
 	
 	if direction == "down" or direction == "up":
-		for row in range(grid_size):
-			for child in get_children():
-				if child.position[0] == cell_size*current_grid_x:
+		for child in get_children():
+			if child is Sprite2D and child.name != "Cursor":
+				if child.position.x == cell_size * current_grid_x:
 					cells_to_move.append(child)
 	
 	elif direction == "left" or direction == "right":
-		for col in range(grid_size):
-			for child in get_children():
-				if child.position[1] == cell_size*current_grid_y:
+		for child in get_children():
+			if child is Sprite2D and child.name != "Cursor":
+				if child.position.y == cell_size * current_grid_y:
 					cells_to_move.append(child)
 	
 	grid_tween = create_tween()
 	grid_tween.set_parallel(true)
-	var clear_cells = []
 	
 	for cell in cells_to_move:
 		var start_pos = cell.position
@@ -92,14 +91,11 @@ func grid_move(direction):
 					end_pos.y -= cell_size
 					grid_tween.tween_property(cell, "position", end_pos, 0.15)
 				else:
-					end_pos.y -= cell_size
 					var newcell = cell.duplicate()
-					newcell.position = Vector2(end_pos.x, 630)
+					newcell.position = Vector2(start_pos.x, 630)
 					add_child(newcell)
-					end_pos = Vector2(end_pos.x, 630-cell_size)
-					clear_cells.append(cell)
-					cell = newcell
-						
+					grid_tween.tween_property(newcell, "position", Vector2(start_pos.x, 630 - cell_size), 0.15)
+					cell.call_deferred("queue_free")
 			#"down": 
 				#if not start_pos.y == 630-cell_size:
 					#end_pos.y += cell_size
@@ -119,11 +115,7 @@ func grid_move(direction):
 				#else:
 					#end_pos.x = 0
 		
-		grid_tween.tween_property(cell, "position", end_pos, 0.15)
 	
-	for i in clear_cells:
-		i.queue_free()
-		print(i)
 func _process(_delta):
 	if Input.is_action_just_pressed("move_cursor_up"): cursor_move("up")
 	if Input.is_action_just_pressed("move_cursor_down"): cursor_move("down")
