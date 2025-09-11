@@ -80,6 +80,7 @@ func grid_move(direction):
 	
 	grid_tween = create_tween()
 	grid_tween.set_parallel(true)
+	var clear_cells = []
 	
 	for cell in cells_to_move:
 		var start_pos = cell.position
@@ -95,31 +96,34 @@ func grid_move(direction):
 					var newcell = cell.duplicate()
 					newcell.position = Vector2(end_pos.x, 630)
 					add_child(newcell)
-					grid_tween.tween_property(cell, "position", end_pos, 0.15)
-					grid_tween.tween_property(newcell, "position", Vector2(end_pos.x, 630-cell_size), 0.15)
-					cell.queue_free()
-					
-			"down": 
-				if not start_pos.y == 630-cell_size:
-					end_pos.y += cell_size
-					grid_tween.tween_property(cell, "position", end_pos, 0.15)
-				else:
-					end_pos.y = 0
-			"left":
-				if not start_pos.x == 0:
-					end_pos.x -= cell_size
-					grid_tween.tween_property(cell, "position", end_pos, 0.15)
-				else:
-					end_pos.x = (grid_size - 1) * cell_size
-			"right":
-				if not start_pos.x == 630-cell_size:
-					end_pos.x += cell_size
-					grid_tween.tween_property(cell, "position", end_pos, 0.15)
-				else:
-					end_pos.x = 0
+					end_pos = Vector2(end_pos.x, 630-cell_size)
+					clear_cells.append(cell)
+					cell = newcell
+						
+			#"down": 
+				#if not start_pos.y == 630-cell_size:
+					#end_pos.y += cell_size
+					#grid_tween.tween_property(cell, "position", end_pos, 0.15)
+				#else:
+					#end_pos.y = 0
+			#"left":
+				#if not start_pos.x == 0:
+					#end_pos.x -= cell_size
+					#grid_tween.tween_property(cell, "position", end_pos, 0.15)
+				#else:
+					#end_pos.x = (grid_size - 1) * cell_size
+			#"right":
+				#if not start_pos.x == 630-cell_size:
+					#end_pos.x += cell_size
+					#grid_tween.tween_property(cell, "position", end_pos, 0.15)
+				#else:
+					#end_pos.x = 0
 		
 		grid_tween.tween_property(cell, "position", end_pos, 0.15)
 	
+	for i in clear_cells:
+		i.queue_free()
+		print(i)
 func _process(_delta):
 	if Input.is_action_just_pressed("move_cursor_up"): cursor_move("up")
 	if Input.is_action_just_pressed("move_cursor_down"): cursor_move("down")

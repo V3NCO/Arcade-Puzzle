@@ -8,7 +8,7 @@
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_uikxg"]
 
-[node name="3x3Grid" type="Node2D"]
+[node name="Grid" type="Node2D"]
 script = ExtResource("1_n8x2e")
 
 [node name="HSplitContainer" type="HSplitContainer" parent="."]

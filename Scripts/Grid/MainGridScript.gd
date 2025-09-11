@@ -164,13 +164,13 @@ func init_render_cells(initial_grid: Dictionary, cell_size: float, cells_name: S
 			cell.texture = load(text_str)
 			cell.scale = Vector2(scale_fact, scale_fact)
 			cell.centered = false
-			cell.name = "Cell_"+str(index)+"_"+str(n)+"_"+str(o)
+			cell.name = "Cell_"+str(index)+"_"+str(n)+"_"+str(o+1)
 			# n is line; index is column; o is the texture id (-1)
 			# Debug Text
-			print("Setting Cell Named "+str(cell.name)+" that has "+str(text_str)+" set as their texture and "+str(scale_fact)+" as their scale at : " + str(Vector2(cell_size*index, cell_size*n)))			
+			# print("Setting Cell Named "+str(cell.name)+" that has "+str(text_str)+" set as their texture and "+str(scale_fact)+" as their scale at : " + str(Vector2(cell_size*index, cell_size*n)))			
 			
 			# Make Cell
-			cell.set_name(cells_name+"_"+str(index)+"_"+str(n)+"_"+str(o))
+			cell.set_name(cells_name+"_"+str(index)+"_"+str(n)+"_"+str(o+1))
 			add_to.add_child(cell)
 			
 			# Add one to index bcz idk how to make it so I can get the index from o directly :P
