@@ -3,13 +3,16 @@ extends VBoxContainer
 
 var difficulty = 1
 var grid_size = 3
+var campaign = false
+var level = 0
 @onready var diff_btn = $DifficultyBtn/Label
+@onready var grid_btn = $GridSizeBtn/Label
 signal ask_start
 signal getout
 
 func _ready():
 	diff_btn.text = "Difficulty : 1 - 3-15 Shuffle Steps"
-
+	grid_btn.text = "Grid Size : 3x3"
 
 
 func _on_difficulty_pressed() -> void:
@@ -38,4 +41,27 @@ func _quit_button() -> void:
 
 
 func _on_skip_button_pressed() -> void:
+	getout.emit(false)
+
+
+func _on_grid_size_btn_pressed() -> void:
+	if grid_size == 3:
+		grid_btn.text = "Grid Size : 5x5"
+		grid_size = 5
+	elif grid_size == 5:
+		grid_btn.text = "Grid Size : 7x7"
+		grid_size = 7
+	elif grid_size == 7:
+		grid_btn.text = "Grid Size : 9x9"
+		grid_size = 9
+	elif grid_size == 9:
+		grid_btn.text = "Grid Size : 12x12"
+		grid_size = 12
+	if grid_size == 12:
+		grid_btn.text = "Grid Size : 3x3"
+		grid_size = 3
+
+
+func _on_campaign_button_pressed() -> void:
+	campaign = true
 	getout.emit(false)

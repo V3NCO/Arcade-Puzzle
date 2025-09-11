@@ -12,6 +12,8 @@ func get_data():
 	var data = {}
 	data.set("difficulty", difficulty)
 	data.set("grid_size", grid_size)
+	data.set("campaign", false)
+	data.set("level", 0)
 	print("sent data: "+str(data))
 	return data
 

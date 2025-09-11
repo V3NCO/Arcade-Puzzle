@@ -9,21 +9,36 @@ extends Node2D
 var difficulty = 5
 # Grid Sizes : 3x3 5x5 7x7 9x9 12x12
 var grid_size = 3
+var text_element
+var campaign = false; var level = 0
 # Each Panels
 @onready var right_panel = $%RightPanel
 @onready var left_panel = $%LeftPanel
 signal init_done
+var data_received = false
 
 func _ready() -> void:
 	start()
 
-#func receive_data(data):
-	#var difficulty = data["difficulty"]
-	#var grid_size = data["grid_size"]
-	#print("Received Data : " + str(data))
+func receive_data(data):
+	difficulty = data["difficulty"]
+	grid_size = data["grid_size"]
+	campaign = data["campaign"]
+	level = data["level"]
+	print("Received Data : " + str(data))
+	data_received = true
 
 func start():
 	# Make initial Grid
+	while !data_received:
+		continue
+		
+	if campaign:
+		if level == 0:
+			difficulty = 1
+			grid_size = 3
+			
+	
 	var initial_grid = init_make_grid(grid_size)
 	
 	# Debug Text
@@ -32,12 +47,23 @@ func start():
 	
 	# Set the size for each cell to fit in the grid
 	var cell_size = float(630)/grid_size
+	if level == 0:
+		initial_grid = {0:[0,0,0], 1:[1,1,1], 2:[2,2,2]}
 	init_render_cells(initial_grid, cell_size, "CellRight", right_panel)
 	print("Step 2 complete; Proceeding to Step 3.")
-	init_render_cells(scramble_grid(initial_grid, difficulty), cell_size, "CellLeft", left_panel)
+	var scrambled_grid = scramble_grid(initial_grid, difficulty)
+	if level == 0:
+		scrambled_grid = {0:[0,1,0], 1:[2,1,1], 2:[0,2,2]}
+	init_render_cells(scrambled_grid, cell_size, "CellLeft", left_panel)
 	print("Step 3 Complete. Sending Data to Left Panel.")
 	init_done.emit(difficulty, grid_size, cell_size)
-
+	if campaign and level == 0:
+		text_element = Label.new()
+		text_element.text = "Welcome ! Use the arrow keys to move your cursor."
+		text_element.theme = load("res://assets/TextTheme.tres")
+		add_child(text_element)
+		
+ 
 # Scrambly Scrambly and Create Initial grid
 func init_make_grid(grid_size: int):
 	# Initialize grid value

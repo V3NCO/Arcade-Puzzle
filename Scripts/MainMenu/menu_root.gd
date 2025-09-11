@@ -8,5 +8,7 @@ func get_data():
 	var data = {}
 	data.set("difficulty", menu.difficulty)
 	data.set("grid_size", menu.grid_size)
+	data.set("level", 0)
+	data.set("campaign", menu.campaign)
 	print("sent data: "+str(data))
 	return data

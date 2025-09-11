@@ -1,5 +1,6 @@
 extends Panel
 
+
 var init_done = false
 var difficulty; var grid_size; var cell_size; var initial_grid
 var cursor; var cursor_tween: Tween
