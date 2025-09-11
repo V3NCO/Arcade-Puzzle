@@ -33,6 +33,8 @@ func init_cursor():
 	add_child(cursor)
 	move_child(cursor, 0)
 	cursor_tween = create_tween()
+	cursor_tween.set_trans(Tween.TRANS_CUBIC)
+	cursor_tween.set_ease(Tween.EASE_IN_OUT)
 	grid_tween = create_tween()
 	current_grid_x = grid_size / 2; current_grid_y = grid_size / 2
 		
@@ -57,6 +59,8 @@ func cursor_move(direction):
 		
 		cursor_tween.kill()
 		cursor_tween = create_tween()
+		cursor_tween.set_trans(Tween.TRANS_CUBIC)
+		cursor_tween.set_ease(Tween.EASE_IN_OUT)
 		cursor_tween.tween_property(cursor, "position", target_pos, 0.05)
 
 func grid_move(direction):
@@ -80,6 +84,8 @@ func grid_move(direction):
 	
 	grid_tween = create_tween()
 	grid_tween.set_parallel(true)
+	grid_tween.set_trans(Tween.TRANS_CUBIC)
+	grid_tween.set_ease(Tween.EASE_IN_OUT)
 	
 	for cell in cells_to_move:
 		var start_pos = cell.position
@@ -89,32 +95,43 @@ func grid_move(direction):
 			"up":
 				if not start_pos.y == 0:
 					end_pos.y -= cell_size
-					grid_tween.tween_property(cell, "position", end_pos, 0.15)
+					grid_tween.tween_property(cell, "position", end_pos, 0.10)
 				else:
 					var newcell = cell.duplicate()
 					newcell.position = Vector2(start_pos.x, 630)
 					add_child(newcell)
-					grid_tween.tween_property(newcell, "position", Vector2(start_pos.x, 630 - cell_size), 0.15)
+					grid_tween.tween_property(newcell, "position", Vector2(start_pos.x, 630 - cell_size), 0.10)
 					cell.call_deferred("queue_free")
-			#"down": 
-				#if not start_pos.y == 630-cell_size:
-					#end_pos.y += cell_size
-					#grid_tween.tween_property(cell, "position", end_pos, 0.15)
-				#else:
-					#end_pos.y = 0
-			#"left":
-				#if not start_pos.x == 0:
-					#end_pos.x -= cell_size
-					#grid_tween.tween_property(cell, "position", end_pos, 0.15)
-				#else:
-					#end_pos.x = (grid_size - 1) * cell_size
-			#"right":
-				#if not start_pos.x == 630-cell_size:
-					#end_pos.x += cell_size
-					#grid_tween.tween_property(cell, "position", end_pos, 0.15)
-				#else:
-					#end_pos.x = 0
-		
+			"down":
+				if not start_pos.y == 630.0-cell_size:
+					end_pos.y += cell_size
+					grid_tween.tween_property(cell, "position", end_pos, 0.10)
+				else:
+					var newcell = cell.duplicate()
+					newcell.position = Vector2(start_pos.x, -cell_size)
+					add_child(newcell)
+					grid_tween.tween_property(newcell, "position", Vector2(start_pos.x, 0), 0.10)
+					cell.call_deferred("queue_free")
+			"left":
+				if not start_pos.x == 0:
+					end_pos.x -= cell_size
+					grid_tween.tween_property(cell, "position", end_pos, 0.10)
+				else:
+					var newcell = cell.duplicate()
+					newcell.position = Vector2(630, start_pos.y)
+					add_child(newcell)
+					grid_tween.tween_property(newcell, "position", Vector2(630 - cell_size, start_pos.y), 0.10)
+					cell.call_deferred("queue_free")
+			"right":
+				if not start_pos.x == 630.0-cell_size:
+					end_pos.x += cell_size
+					grid_tween.tween_property(cell, "position", end_pos, 0.10)
+				else:
+					var newcell = cell.duplicate()
+					newcell.position = Vector2(-cell_size, start_pos.y)
+					add_child(newcell)
+					grid_tween.tween_property(newcell, "position", Vector2(0, start_pos.y), 0.10)
+					cell.call_deferred("queue_free")
 	
 func _process(_delta):
 	if Input.is_action_just_pressed("move_cursor_up"): cursor_move("up")
