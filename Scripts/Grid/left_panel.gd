@@ -1,19 +1,26 @@
 extends Panel
 
 
-var init_done = false
+var init_done = false; var campaign; var level
 var difficulty; var grid_size; var cell_size; var initial_grid
 var cursor; var cursor_tween: Tween
 var current_grid_x: int; var current_grid_y: int; 
-var grid_tween: Tween
+var grid_tween: Tween; var loopa
 @onready var right_grid = $%RightPanel
+signal tutstep1
+signal tutstep2
+signal won_yay
 
-func _on_init_done(diff, gs, cs) -> void:
+func _on_init_done(diff, gs, cs, ce, lvl) -> void:
 	difficulty = diff
 	grid_size = gs
 	cell_size = cs
+	campaign = ce
+	level = lvl
 	print("Data Received and Values set difficulty : "+str(difficulty)+"; grid_size: "+str(grid_size)+"; cell_size: "+str(cell_size))
 	init_cursor()
+	if campaign and lvl == 0:
+		loopa = true
 	initial_grid = {}
 	for i in range(grid_size):
 		var current_line = []
@@ -55,7 +62,10 @@ func init_cursor():
 func cursor_move(direction):
 	var new_x = current_grid_x
 	var new_y = current_grid_y
-	
+	if loopa:
+		loopa = false
+		tutstep1.emit()
+		
 	if direction == "right" and current_grid_x < grid_size - 1:
 		new_x += 1
 	elif direction == "left" and current_grid_x > 0:
@@ -76,6 +86,8 @@ func cursor_move(direction):
 		cursor_tween.set_trans(Tween.TRANS_CUBIC)
 		cursor_tween.set_ease(Tween.EASE_IN_OUT)
 		cursor_tween.tween_property(cursor, "position", target_pos, 0.05)
+
+	
 
 func grid_move(direction):
 	var cells_to_move = []
@@ -166,9 +178,18 @@ func check_win():
 func won():
 	print("Won !")
 	init_done = false
+	if campaign and level == 0:
+		tutstep2.emit()
+	elif campaign and level == 1:
+		won_yay.emit(true, 2, 2, 5)
+	elif campaign and level == 2:
+		won_yay.emit(true, 3, 3, 7)
+	elif campaign and level == 3:
+		won_yay.emit(false, 0, 0, 0)
+	
 
 func _process(_delta):
-	if Input.is_action_just_pressed("move_cursor_up"): cursor_move("up")
+	if Input.is_action_just_pressed("move_cursor_up"): cursor_move("up") 
 	if Input.is_action_just_pressed("move_cursor_down"): cursor_move("down")
 	if Input.is_action_just_pressed("move_cursor_left"): cursor_move("left")
 	if Input.is_action_just_pressed("move_cursor_right"): cursor_move("right")

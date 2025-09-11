@@ -55,3 +55,6 @@ layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxEmpty_uikxg")
 
 [connection signal="init_done" from="." to="HSplitContainer/LeftMargin/CenterContainer/LeftPanel" method="_on_init_done"]
+[connection signal="tutstep1" from="HSplitContainer/LeftMargin/CenterContainer/LeftPanel" to="." method="_on_left_panel_tutstep_1"]
+[connection signal="tutstep2" from="HSplitContainer/LeftMargin/CenterContainer/LeftPanel" to="." method="_on_left_panel_tutstep_2"]
+[connection signal="won_yay" from="HSplitContainer/LeftMargin/CenterContainer/LeftPanel" to="." method="_won_yay"]

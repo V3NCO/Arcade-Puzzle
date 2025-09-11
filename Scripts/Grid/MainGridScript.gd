@@ -56,7 +56,7 @@ func start():
 		scrambled_grid = {0:[0,1,0], 1:[2,1,1], 2:[0,2,2]}
 	init_render_cells(scrambled_grid, cell_size, "CellLeft", left_panel)
 	print("Step 3 Complete. Sending Data to Left Panel.")
-	init_done.emit(difficulty, grid_size, cell_size)
+	init_done.emit(difficulty, grid_size, cell_size, campaign, level)
 	if campaign and level == 0:
 		text_element = Label.new()
 		text_element.text = "Welcome ! Use the arrow keys to move your cursor."
@@ -213,3 +213,39 @@ func init_render_cells(initial_grid: Dictionary, cell_size: float, cells_name: S
 	# Everything will have to be fast, dynamic and smooth; even the cursor; maybe ease in/out fast would be good
 	# Find a way to scale the asset to the sprite or whatever you choose
 	
+
+
+func _on_left_panel_tutstep_1() -> void:
+	text_element.text = "Well done ! Now put it on the top left and do 1 left move and 1 down (ZQSD/WASD to move)"
+
+
+func _on_left_panel_tutstep_2() -> void:
+	text_element.text = "Well done ! You're now ready for your first real puzzle :)"
+	await get_tree().create_timer(5).timeout
+	SceneManager.swap_scenes("res://Scenes/Grid.tscn",get_tree().root,self,"fade_to_black")
+	level = 1
+	difficulty = 1
+	grid_size = 3
+
+func _won_yay(next_lvl, lvl, dif, grd_size) -> void:
+	if next_lvl:
+		level = lvl
+		difficulty = dif
+		grid_size = grd_size
+		SceneManager.swap_scenes("res://Scenes/Grid.tscn",get_tree().root,self,"fade_to_black")
+	else:
+		text_element = Label.new()
+		text_element.text = "GG!!! YOU WIN! If you want different difficulties you can try from the main menu :D"
+		text_element.theme = load("res://assets/TextTheme.tres")
+		add_child(text_element)
+		await get_tree().create_timer(5).timeout
+		get_tree().quit()
+		
+func get_data():
+	var data = {}
+	data.set("difficulty", difficulty)
+	data.set("grid_size", grid_size)
+	data.set("level", level)
+	data.set("campaign", campaign)
+	print("sent data: "+str(data))
+	return data
