@@ -1,8 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://dgjvw4yfxe3pq"]
+[gd_scene load_steps=8 format=3 uid="uid://dgjvw4yfxe3pq"]
 
 [ext_resource type="Script" uid="uid://c40moa3ggjqjd" path="res://Scripts/Grid/MainGridScript.gd" id="1_n8x2e"]
 [ext_resource type="Texture2D" uid="uid://btejmm40tedn4" path="res://assets/images/vectors/UI_Elements/BgGrid.svg" id="2_tdbcv"]
 [ext_resource type="Script" uid="uid://g0hl8fuc7okq" path="res://Scripts/Grid/left_panel.gd" id="3_0yrm8"]
+[ext_resource type="AudioStream" uid="uid://dc6hqiwuayfsi" path="res://assets/Sounds/swooshfaster.wav" id="4_tdbcv"]
+[ext_resource type="AudioStream" uid="uid://bo625ob5ryil1" path="res://assets/Sounds/jump.wav" id="5_0yrm8"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ocdfl"]
 
@@ -53,6 +55,14 @@ unique_name_in_owner = true
 custom_minimum_size = Vector2(630, 630)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxEmpty_uikxg")
+
+[node name="SwooshSwipe" type="AudioStreamPlayer" parent="."]
+unique_name_in_owner = true
+stream = ExtResource("4_tdbcv")
+
+[node name="Cursor" type="AudioStreamPlayer" parent="."]
+unique_name_in_owner = true
+stream = ExtResource("5_0yrm8")
 
 [connection signal="init_done" from="." to="HSplitContainer/LeftMargin/CenterContainer/LeftPanel" method="_on_init_done"]
 [connection signal="tutstep1" from="HSplitContainer/LeftMargin/CenterContainer/LeftPanel" to="." method="_on_left_panel_tutstep_1"]

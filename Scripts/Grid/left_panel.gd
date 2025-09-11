@@ -7,6 +7,8 @@ var cursor; var cursor_tween: Tween
 var current_grid_x: int; var current_grid_y: int; 
 var grid_tween: Tween; var loopa
 @onready var right_grid = $%RightPanel
+@onready var swooshsound = $%SwooshSwipe
+@onready var cursorsound = $%Cursor
 signal tutstep1
 signal tutstep2
 signal won_yay
@@ -86,7 +88,6 @@ func cursor_move(direction):
 		cursor_tween.set_trans(Tween.TRANS_CUBIC)
 		cursor_tween.set_ease(Tween.EASE_IN_OUT)
 		cursor_tween.tween_property(cursor, "position", target_pos, 0.05)
-
 	
 
 func grid_move(direction):
@@ -156,9 +157,10 @@ func grid_move(direction):
 					var newcell = cell.duplicate()
 					newcell.position = Vector2(-cell_size, start_pos.y)
 					add_child(newcell)
+					
 					grid_tween.tween_property(newcell, "position", Vector2(0, start_pos.y), 0.10)
 					cell.call_deferred("queue_free")
-
+	swooshsound.play()
 func check_win():
 	var texture_list = {}
 	for i in range(grid_size):
