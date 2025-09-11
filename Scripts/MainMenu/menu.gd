@@ -2,6 +2,7 @@ extends VBoxContainer
 
 
 var difficulty = 1
+var grid_size = 3
 @onready var diff_btn = $DifficultyBtn/Label
 signal ask_start
 signal getout

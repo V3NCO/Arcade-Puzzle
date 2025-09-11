@@ -1,13 +1,17 @@
 extends Control
 
 var difficulty
+var grid_size
 
 func receive_data(data):
-	var difficulty = data
-	print("Received Data : " + str(difficulty))
+	var difficulty = data["difficulty"]
+	var grid_size = data["grid_size"]
+	print("Received Data : " + str(data))
 
 func get_data():
-	var data = difficulty
+	var data = {}
+	data.set("difficulty", difficulty)
+	data.set("grid_size", grid_size)
 	print("sent data: "+str(data))
 	return data
 

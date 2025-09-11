@@ -1,9 +1,11 @@
 extends Panel
 
 var init_done = false
-var difficulty; var grid_size; var cell_size
+var difficulty; var grid_size; var cell_size; var initial_grid
 var cursor; var cursor_tween: Tween
-var current_grid_x: int; var current_grid_y: int; var grid_tween: Tween
+var current_grid_x: int; var current_grid_y: int; 
+var grid_tween: Tween
+@onready var right_grid = $%RightPanel
 
 func _on_init_done(diff, gs, cs) -> void:
 	difficulty = diff
@@ -11,6 +13,17 @@ func _on_init_done(diff, gs, cs) -> void:
 	cell_size = cs
 	print("Data Received and Values set difficulty : "+str(difficulty)+"; grid_size: "+str(grid_size)+"; cell_size: "+str(cell_size))
 	init_cursor()
+	initial_grid = {}
+	for i in range(grid_size):
+		var current_line = []
+		
+		for j in range(grid_size):
+			var current_coords = Vector2(cell_size*j, cell_size*i)
+			for child in right_grid.get_children():
+				if child is Sprite2D and child.name != "Cursor":
+					if child.position == current_coords:
+						current_line.append(int(child.texture.resource_path.trim_suffix(".png").trim_prefix("res://assets/images/Tiles/Compo")))
+		initial_grid.set(i, current_line)
 	init_done = true
 
 func init_cursor():
@@ -132,7 +145,27 @@ func grid_move(direction):
 					add_child(newcell)
 					grid_tween.tween_property(newcell, "position", Vector2(0, start_pos.y), 0.10)
 					cell.call_deferred("queue_free")
-	
+
+func check_win():
+	var texture_list = {}
+	for i in range(grid_size):
+		var current_line = []
+		
+		for j in range(grid_size):
+			var current_coords = Vector2(cell_size*j, cell_size*i)
+			for child in get_children():
+				if child is Sprite2D and child.name != "Cursor":
+					if child.position == current_coords:
+						current_line.append(int(child.texture.resource_path.trim_suffix(".png").trim_prefix("res://assets/images/Tiles/Compo")))
+		texture_list.set(i, current_line)
+	if init_done:
+		if texture_list == initial_grid:
+			won()
+
+func won():
+	print("Won !")
+	init_done = false
+
 func _process(_delta):
 	if Input.is_action_just_pressed("move_cursor_up"): cursor_move("up")
 	if Input.is_action_just_pressed("move_cursor_down"): cursor_move("down")
@@ -143,3 +176,4 @@ func _process(_delta):
 	if Input.is_action_just_pressed("move_grid_right"): grid_move("right")
 	if Input.is_action_just_pressed("move_grid_left"): grid_move("left")
 	if Input.is_action_just_pressed("move_grid_up"): grid_move("up")
+	check_win()

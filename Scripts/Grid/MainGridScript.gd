@@ -8,7 +8,7 @@ extends Node2D
 # 5 - 200-1000 Shuffle Steps
 var difficulty = 5
 # Grid Sizes : 3x3 5x5 7x7 9x9 12x12
-var grid_size = 12
+var grid_size = 3
 # Each Panels
 @onready var right_panel = $%RightPanel
 @onready var left_panel = $%LeftPanel
@@ -16,6 +16,11 @@ signal init_done
 
 func _ready() -> void:
 	start()
+
+#func receive_data(data):
+	#var difficulty = data["difficulty"]
+	#var grid_size = data["grid_size"]
+	#print("Received Data : " + str(data))
 
 func start():
 	# Make initial Grid
