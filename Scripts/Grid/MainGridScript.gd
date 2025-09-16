@@ -10,6 +10,7 @@ var difficulty = 5
 # Grid Sizes : 3x3 5x5 7x7 9x9 12x12
 var grid_size = 3
 var text_element
+var dialogbox; var dialogbg; var centercontainer
 var campaign = false; var level = 0
 # Each Panels
 @onready var right_panel = $%RightPanel
@@ -58,11 +59,28 @@ func start():
 	print("Step 3 Complete. Sending Data to Left Panel.")
 	init_done.emit(difficulty, grid_size, cell_size, campaign, level)
 	if campaign and level == 0:
+		
+		dialogbox = MarginContainer.new()
+		dialogbox.theme = preload("res://assets/TextTheme.tres")
+		add_child(dialogbox)
+		
+		centercontainer = CenterContainer.new()
+		centercontainer.SIZE_EXPAND_FILL
+		centercontainer.custom_minimum_size = Vector2(1880, 380)
+		dialogbg = TextureRect.new()
+		dialogbg.STRETCH_KEEP_ASPECT_CENTERED
+		dialogbg.texture = preload("res://assets/images/vectors/UI_Elements/bg-dialog.svg")
+		dialogbox.add_child(centercontainer)
+		centercontainer.add_child(dialogbg)
+		dialogbox.add_child(dialogbg)
+		
+		
 		text_element = Label.new()
 		text_element.text = "Welcome ! Use the arrow keys to move your cursor."
-		text_element.theme = load("res://assets/TextTheme.tres")
-		add_child(text_element)
-		
+		text_element.theme = preload("res://assets/TextTheme.tres")
+		centercontainer.add_child(text_element)
+		await get_tree().create_timer(10).timeout
+		dialogbox.visible = false
  
 # Scrambly Scrambly and Create Initial grid
 func init_make_grid(grid_size: int):
@@ -217,10 +235,13 @@ func init_render_cells(initial_grid: Dictionary, cell_size: float, cells_name: S
 
 func _on_left_panel_tutstep_1() -> void:
 	text_element.text = "Well done ! Now put it on the top left and do 1 left move and 1 down (ZQSD/WASD to move)"
-
+	dialogbox.visible = true
+	await get_tree().create_timer(10).timeout
+	dialogbox.visible = false
 
 func _on_left_panel_tutstep_2() -> void:
 	text_element.text = "Well done ! See how you made both grids match ? That's your end goal on real puzzles. GL!"
+	dialogbox.visible = true
 	await get_tree().create_timer(10).timeout
 	SceneManager.swap_scenes("res://Scenes/Grid.tscn",get_tree().root,self,"fade_to_black")
 	level = 1
@@ -236,7 +257,7 @@ func _won_yay(next_lvl, lvl, dif, grd_size) -> void:
 	else:
 		text_element = Label.new()
 		text_element.text = "GG!!! YOU WIN! If you want different difficulties you can try from the main menu :D"
-		text_element.theme = load("res://assets/TextTheme.tres")
+		text_element.theme = preload("res://assets/TextTheme.tres")
 		add_child(text_element)
 		await get_tree().create_timer(5).timeout
 		get_tree().quit()
