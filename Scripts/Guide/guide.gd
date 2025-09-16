@@ -2,20 +2,17 @@ extends Control
 
 var difficulty
 var grid_size
+var dataa
 
 func receive_data(data):
 	var difficulty = data["difficulty"]
 	var grid_size = data["grid_size"]
+	dataa = data
 	print("Received Data : " + str(data))
 
 func get_data():
-	var data = {}
-	data.set("difficulty", difficulty)
-	data.set("grid_size", grid_size)
-	data.set("campaign", false)
-	data.set("level", 0)
-	print("sent data: "+str(data))
-	return data
+	print("sent data: "+str(dataa))
+	return dataa
 
 func wait(seconds: float) -> void:
 	await get_tree().create_timer(seconds).timeout

@@ -1,0 +1,203 @@
+[gd_scene load_steps=10 format=3 uid="uid://da5lwlujf5ykn"]
+
+[ext_resource type="Script" uid="uid://ds6pk5tad3ui2" path="res://Scripts/MainMenu/menu_root.gd" id="1_mcbt2"]
+[ext_resource type="Texture2D" uid="uid://c2ip6a04hgapi" path="res://assets/images/Background_Menu.png" id="2_noxmv"]
+[ext_resource type="Script" uid="uid://b03t0ssmatd7r" path="res://Scripts/MainMenu/menu.gd" id="3_upq37"]
+[ext_resource type="FontFile" uid="uid://e10bi54jw2xp" path="res://assets/Chewy-Regular.ttf" id="4_hnobf"]
+[ext_resource type="Texture2D" uid="uid://cl0lyfrj1lal" path="res://assets/images/vectors/UI_Elements/buttons_normal/Brown.svg" id="5_w6tkn"]
+[ext_resource type="Texture2D" uid="uid://ckwo8bxk3bxn5" path="res://assets/images/vectors/UI_Elements/buttons_hovered/Orange.svg" id="6_c06bo"]
+[ext_resource type="Texture2D" uid="uid://dqqfitay01xps" path="res://assets/images/vectors/UI_Elements/buttons_hovered/Brown.svg" id="7_wklcd"]
+[ext_resource type="Script" uid="uid://c5m5f2lm5quv4" path="res://Scripts/MainMenu/play_button.gd" id="8_t4en1"]
+[ext_resource type="Texture2D" uid="uid://dbce405w46vsn" path="res://assets/images/vectors/UI_Elements/buttons_disabled/Brown.svg" id="9_bdfil"]
+
+[node name="MainMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_mcbt2")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 2
+offset_right = 1920.0
+offset_bottom = 1081.0
+texture = ExtResource("2_noxmv")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 0
+offset_right = 1920.0
+offset_bottom = 1080.0
+theme_override_constants/margin_left = 100
+theme_override_constants/margin_top = 100
+theme_override_constants/margin_right = 100
+theme_override_constants/margin_bottom = 100
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+alignment = 1
+
+[node name="Control2" type="Control" parent="MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+size_flags_stretch_ratio = 2.36
+script = ExtResource("3_upq37")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/outline_size = 50
+theme_override_fonts/normal_font = ExtResource("4_hnobf")
+theme_override_font_sizes/mono_font_size = 9
+theme_override_font_sizes/normal_font_size = 106
+text = "
+Grid Shift"
+fit_content = true
+tab_size = 11
+horizontal_alignment = 1
+
+[node name="PlayBtn" type="TextureButton" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+texture_normal = ExtResource("5_w6tkn")
+texture_pressed = ExtResource("6_c06bo")
+texture_hover = ExtResource("7_wklcd")
+texture_focused = ExtResource("7_wklcd")
+stretch_mode = 0
+script = ExtResource("8_t4en1")
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/PlayBtn"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -33.0
+offset_top = -25.0
+offset_right = 33.0
+offset_bottom = 25.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_outline_color = Color(0.498039, 0.333333, 0.184314, 1)
+theme_override_constants/outline_size = 20
+theme_override_fonts/font = ExtResource("4_hnobf")
+theme_override_font_sizes/font_size = 38
+text = "Start Game"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="DifficultyBtn" type="TextureButton" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+texture_normal = ExtResource("5_w6tkn")
+texture_pressed = ExtResource("6_c06bo")
+texture_hover = ExtResource("7_wklcd")
+texture_focused = ExtResource("7_wklcd")
+stretch_mode = 0
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/DifficultyBtn"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -33.0
+offset_top = -25.0
+offset_right = 33.0
+offset_bottom = 25.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_outline_color = Color(0.498039, 0.333333, 0.184314, 1)
+theme_override_constants/outline_size = 20
+theme_override_fonts/font = ExtResource("4_hnobf")
+theme_override_font_sizes/font_size = 38
+text = "Difficulty : 1 - 3-15 Shuffle Steps"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="GridSizeBtn" type="TextureButton" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+texture_normal = ExtResource("5_w6tkn")
+texture_pressed = ExtResource("6_c06bo")
+texture_hover = ExtResource("7_wklcd")
+texture_disabled = ExtResource("9_bdfil")
+texture_focused = ExtResource("7_wklcd")
+stretch_mode = 0
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/GridSizeBtn"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -33.0
+offset_top = -25.0
+offset_right = 33.0
+offset_bottom = 25.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_outline_color = Color(0.498039, 0.333333, 0.184314, 1)
+theme_override_constants/outline_size = 20
+theme_override_fonts/font = ExtResource("4_hnobf")
+theme_override_font_sizes/font_size = 38
+text = "Grid Size : 5x5"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="GuideToggle" type="TextureButton" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+texture_normal = ExtResource("5_w6tkn")
+texture_pressed = ExtResource("6_c06bo")
+texture_hover = ExtResource("7_wklcd")
+texture_disabled = ExtResource("9_bdfil")
+texture_focused = ExtResource("7_wklcd")
+stretch_mode = 0
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/GuideToggle"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -33.0
+offset_top = -25.0
+offset_right = 33.0
+offset_bottom = 25.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_outline_color = Color(0.498039, 0.333333, 0.184314, 1)
+theme_override_constants/outline_size = 20
+theme_override_fonts/font = ExtResource("4_hnobf")
+theme_override_font_sizes/font_size = 38
+text = "Guide: OFF"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="CenterContainer" type="CenterContainer" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.77
+
+[node name="Control" type="Control" parent="MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[connection signal="getout" from="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer" to="." method="_on_v_box_container_getout"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/PlayBtn" to="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer" method="_on_play_button_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/DifficultyBtn" to="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer" method="_on_difficulty_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/GridSizeBtn" to="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer" method="_on_grid_size_btn_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/GuideToggle" to="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer" method="_on_guide_btn_pressed"]

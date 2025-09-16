@@ -4,15 +4,18 @@ extends VBoxContainer
 var difficulty = 1
 var grid_size = 3
 var campaign = false
+var guide = false
 var level = 0
 @onready var diff_btn = $DifficultyBtn/Label
 @onready var grid_btn = $GridSizeBtn/Label
+@onready var guide_btn = $GuideToggle/Label
 signal ask_start
 signal getout
+signal nextmenu
 
 func _ready():
-	diff_btn.text = "Difficulty : 1 - 3-15 Shuffle Steps"
-	grid_btn.text = "Grid Size : 3x3"
+	if diff_btn: diff_btn.text = "Difficulty : 1 - 3-15 Shuffle Steps"
+	if grid_btn: grid_btn.text = "Grid Size : 3x3"
 
 
 func _on_difficulty_pressed() -> void:
@@ -34,7 +37,7 @@ func _on_difficulty_pressed() -> void:
 func _on_play_button_pressed() -> void:
 	# SceneManager.scene_switch("res://Scenes/Ingame_Menu.tscn", difficulty, true)
 	# Only do this if your SceneManager isn't using change_scene_to_file right away.
-	getout.emit(true)
+	getout.emit(guide)
 
 func _quit_button() -> void:
 	get_tree().quit()
@@ -65,3 +68,16 @@ func _on_grid_size_btn_pressed() -> void:
 func _on_campaign_button_pressed() -> void:
 	campaign = true
 	getout.emit(false)
+
+
+func _on_guide_btn_pressed() -> void:
+	if guide == false:
+		guide = true
+		guide_btn.text = "Guide: ON"
+	elif guide == true:
+		guide = false
+		guide_btn.text = "Guide: OFF"
+
+
+func _on_nextmenu_button_pressed() -> void:
+	nextmenu.emit()

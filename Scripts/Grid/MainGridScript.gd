@@ -48,12 +48,12 @@ func start():
 	
 	# Set the size for each cell to fit in the grid
 	var cell_size = float(630)/grid_size
-	if level == 0:
+	if level == 0 and campaign:
 		initial_grid = {0:[0,0,0], 1:[1,1,1], 2:[2,2,2]}
 	init_render_cells(initial_grid, cell_size, "CellRight", right_panel)
 	print("Step 2 complete; Proceeding to Step 3.")
 	var scrambled_grid = scramble_grid(initial_grid, difficulty)
-	if level == 0:
+	if level == 0 and campaign:
 		scrambled_grid = {0:[0,1,0], 1:[2,1,1], 2:[0,2,2]}
 	init_render_cells(scrambled_grid, cell_size, "CellLeft", left_panel)
 	print("Step 3 Complete. Sending Data to Left Panel.")
@@ -270,3 +270,6 @@ func get_data():
 	data.set("campaign", campaign)
 	print("sent data: "+str(data))
 	return data
+	
+# TODO: Would lowk be cool if we did something that reveals the grids maybe behind a curtain or some
+# sort of animation so that you actually visually see its randomized idk

@@ -186,9 +186,9 @@ func won():
 		won_yay.emit(true, 2, 2, 5)
 	elif campaign and level == 2:
 		won_yay.emit(true, 3, 3, 7)
-	elif campaign and level == 3:
+	else:
 		won_yay.emit(false, 0, 0, 0)
-	
+	# 
 
 func _process(_delta):
 	if Input.is_action_just_pressed("move_cursor_up"): cursor_move("up") 
